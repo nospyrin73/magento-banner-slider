@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="nospyrin_bannerslider" resource="default" engine="innodb" comment="Nospyrin Banner Slider">
+        <column xsi:type="int" name="banner_id" unsigned="false" nullable="false" identity="true" comment="Banner ID"/>
+        <column xsi:type="text" name="name" nullable="true" comment="Banner Name"/>
+        <column xsi:type="text" name="banner_image" nullable="false" comment="Banner Image Path"/>
+        <column xsi:type="int" name="status" nullable="false" default="1" comment="Status (1 = Enabled, 0 = Disabled)"/>
+
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="banner_id"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="UNIQUE">
+            <column name="name"/>
+        </constraint>
+    </table>
+</schema>
