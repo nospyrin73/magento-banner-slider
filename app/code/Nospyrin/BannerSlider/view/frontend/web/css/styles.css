@@ -1,0 +1,15 @@
+.banner-slider__item {
+    text-align: center;
+}
+
+.banner-slider__item img {
+    margin-inline: auto;
+}
+
+.banner-slider__title {
+    margin-top: 8px;
+    font-size: 5rem;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+}

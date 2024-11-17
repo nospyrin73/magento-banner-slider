@@ -1,0 +1,27 @@
+<?php
+/** @var \Nospyrin\BannerSlider\Block\Slider $block */
+?>
+
+<div class="banner-slider__slider">
+    <?php foreach ($block->getBanners() as $banner): ?>
+        <div class="slick-slide banner-slider__item">
+            <img src="<?= $banner->getImageUrl() ?>" alt="<?= $banner->getName() ?>"/>
+            <div class="banner-slider__title"><?= $banner->getName() ?></div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+<script type="text/javascript">
+    require(['jquery', 'slick'], function($) {
+        $(document).ready(function () {
+            $('.banner-slider__slider').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 5000,
+                arrows: true,
+                dots: true
+            });
+        })
+    });
+</script>

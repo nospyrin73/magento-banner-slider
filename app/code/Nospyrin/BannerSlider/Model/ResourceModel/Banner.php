@@ -1,22 +1,18 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Nospyrin\BannerSlider\Model\ResourceModel;
 
-class Banner extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+
+class Banner extends AbstractDb
 {
-    private const TABLE_NAME = 'nospyrin_bannerslider';
-
-    private const PRIMARY_KEY = 'banner_id';
-
-    public function __construct(
-        \Magento\Framework\Model\ResourceModel\Db\Context $context
-    )
-    {
-        parent::__construct($context);
-    }
+    private const TABLE_NAME = 'banner_slider';
+    private const FIELD_NAME = 'banner_id';
 
     protected function _construct()
     {
-        $this->_init(self::TABLE_NAME, self::PRIMARY_KEY);
+        $this->_init(self::TABLE_NAME, self::FIELD_NAME);
     }
 }

@@ -1,50 +1,91 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Nospyrin\BannerSlider\Model;
 
-use \Magento\Framework\Model\AbstractModel;
-use Nospyrin\BannerSlider\Model\ResourceModel\Banner as ResourceModelBanner;
+use Nospyrin\BannerSlider\Api\Data\BannerInterface;
+use Magento\Framework\Model\AbstractModel;
+use Nospyrin\BannerSlider\Model\ResourceModel\Banner as BannerResource;
 
-class Banner extends AbstractModel implements \Magento\Framework\DataObject\IdentityInterface
+class Banner extends AbstractModel implements BannerInterface
 {
-    const CACHE_TAG = 'nospyrin_bannerslider_banner';
+    private const BANNER_ID = 'banner_id';
+    private const NAME = 'name';
+    private const IDENTIFIER = 'identifier';
+    private const CREATED_AT = 'created_at';
+    private const UPDATED_AT = 'updated_at';
+    private const IS_ACTIVE = 'is_active';
 
-    protected $_cacheTag = self::CACHE_TAG;
-
-    /**
-     * @param \Magento\Framework\Model\Context $context
-     * @param \Magento\Framework\Registry $registry
-     * @param \Magento\Framework\Model\ResourceModel\AbstractResource $resource
-     * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
-     * @param array $data
-     */
-    public function __construct(
-        \Magento\Framework\Model\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
-        \Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
-        array $data = []
-    ) {
-        parent::__construct($context, $registry, $resource, $resourceCollection, $data);
-    }
-
-    /**
-     * Initialize resource model
-     *
-     * @return void
-     */
     protected function _construct()
     {
-        $this->_init(ResourceModelBanner::class);
+        $this->_idFieldName = self::BANNER_ID;
+        $this->_init(BannerResource::class);
     }
 
-    /**
-     * Return a unique id for the model.
-     *
-     * @return array
-     */
-    public function getIdentities()
+    public function getBannerId(): int
     {
-        return [self::CACHE_TAG . '_' . $this->getId()];
+        return (int) $this->getData(self::BANNER_ID);
+    }
+
+    public function setBannerId(int | null $bannerId): Banner
+    {
+        $this->setData(self::BANNER_ID, $bannerId);
+        return $this;
+    }
+
+    public function getName(): string
+    {
+        return $this->getData(self::NAME);
+    }
+
+    public function setName(string $name): Banner
+    {
+        $this->setData(self::NAME, $name);
+        return $this;
+    }
+
+    public function getIdentifier(): string
+    {
+        return $this->getData(self::IDENTIFIER);
+    }
+
+    public function setIdentifier(string $identifier): Banner
+    {
+        $this->setData(self::IDENTIFIER, $identifier);
+        return $this;
+    }
+
+    public function getCreatedAt(): string
+    {
+        return $this->getData(self::CREATED_AT);
+    }
+
+    public function setCreatedAt(string $createdAt): Banner
+    {
+        $this->setData(self::CREATED_AT, $createdAt);
+        return $this;
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->getData(self::UPDATED_AT);
+    }
+
+    public function setUpdatedAt(string $updatedAt): Banner
+    {
+        $this->setData(self::UPDATED_AT, $updatedAt);
+        return $this;
+    }
+
+    public function getIsActive(): bool
+    {
+        return (bool) $this->getData(self::IS_ACTIVE);
+    }
+
+    public function setIsActive(bool $isActive): Banner
+    {
+        $this->setData(self::IS_ACTIVE, $isActive);
+        return $this;
     }
 }

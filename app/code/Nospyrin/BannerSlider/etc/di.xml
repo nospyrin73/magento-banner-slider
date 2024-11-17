@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Nospyrin\BannerSlider\Api\BannerRepositoryInterface" type="Nospyrin\BannerSlider\Service\BannerRepository" />
+    <preference for="Nospyrin\BannerSlider\Api\BannerItemRepositoryInterface" type="Nospyrin\BannerSlider\Service\BannerItemRepository" />
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="banner_slider_listing_data_source" xsi:type="string">Nospyrin\BannerSlider\Model\ResourceModel\Banner\Grid\Collection</item>
+                <item name="banner_slider_form_data_source" xsi:type="string">Nospyrin\BannerSlider\Model\ResourceModel\Banner\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Nospyrin\BannerSlider\Model\ResourceModel\Banner\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">banner_slider</argument>
+            <argument name="eventPrefix" xsi:type="string">banner_slider_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">banner_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Nospyrin\BannerSlider\Model\ResourceModel\Banner</argument>
+        </arguments>
+    </type>
+</config>

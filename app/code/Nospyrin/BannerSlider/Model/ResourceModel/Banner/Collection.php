@@ -1,21 +1,20 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace Nospyrin\BannerSlider\Model\ResourceModel\Banner;
 
 use Nospyrin\BannerSlider\Model\Banner;
-use Nospyrin\BannerSlider\Model\ResourceModel\Banner as ResourceModelBanner;
+use Nospyrin\BannerSlider\Model\ResourceModel\Banner as BannerResource;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+class Collection extends AbstractCollection
 {
-    protected $_idFieldName = 'banner_id';
-
-    /**
-     * Define the resource model & the model.
-     *
-     * @return void
-     */
     protected function _construct()
     {
-        $this->_init(Banner::class, ResourceModelBanner::class);
+        $this->_init(
+            Banner::class,
+            BannerResource::class
+        );
     }
 }
